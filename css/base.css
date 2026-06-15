@@ -58,7 +58,8 @@ a.button {
 @media (prefers-reduced-motion: no-preference) {
   .button,
   .surface-card,
-  .menu-card,
+  .menu-featured-card,
+  .menu-list-card,
   .gallery-item,
   .site-nav a,
   .site-footer__nav a {
@@ -72,7 +73,8 @@ a.button {
   }
 
   .surface-card,
-  .menu-card,
+  .menu-featured-card,
+  .menu-list-card,
   .gallery-item {
     --lift-offset: 0px;
   }
@@ -83,7 +85,8 @@ a.button {
   }
 
   .surface-card:hover,
-  .menu-card:hover,
+  .menu-featured-card:hover,
+  .menu-list-card:hover,
   .gallery-item:hover {
     --lift-offset: -4px;
     box-shadow: 0 14px 28px rgb(62 52 46 / 12%);

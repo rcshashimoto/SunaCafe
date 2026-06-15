@@ -66,50 +66,91 @@
 
       <section class="menu" id="menu" aria-labelledby="menu-title">
         <div class="section-heading">
-          <p class="section-kicker">こだわりのメニュー</p>
-          <h2 id="menu-title">まずは定番から、気分で軽食や甘味へ。</h2>
+          <p class="section-kicker">メニュー</p>
+          <h2 id="menu-title">毎日、自家焙煎。花とコーヒーの香りをお楽しみください</h2>
+          <p class="section-lead">まずは人気の3品を写真付きでご紹介します。</p>
         </div>
 
-        <div class="menu-grid">
-          <article class="menu-card surface-card">
-            <div class="menu-card__media menu-card__media--blend media-frame" aria-hidden="true"></div>
-            <div class="menu-card__body">
-              <h3>SUNAブレンド（ハンドドリップ）</h3>
-              <p class="menu-card__price">¥550</p>
-              <p>一番人気の定番コーヒー。</p>
+        <div class="menu-featured">
+          <article class="menu-featured-card surface-card">
+            <div class="menu-featured-card__media menu-featured-card__media--blend media-frame" aria-hidden="true"></div>
+            <div class="menu-featured-card__body">
+              <p class="menu-featured-card__label">おすすめ</p>
+              <h3>SUNAブレンド</h3>
+              <p class="menu-featured-card__lead">すっきりとした定番の一杯。</p>
+              <p class="menu-featured-card__price">¥550</p>
             </div>
           </article>
 
-          <article class="menu-card surface-card">
-            <div class="menu-card__media menu-card__media--single-origin media-frame" aria-hidden="true"></div>
-            <div class="menu-card__body">
-              <h3>今月のシングルオリジン</h3>
-              <p class="menu-card__price">¥600</p>
-              <p>店主がその月におすすめする一杯。</p>
+          <article class="menu-featured-card surface-card">
+            <div class="menu-featured-card__media menu-featured-card__media--toast media-frame" aria-hidden="true"></div>
+            <div class="menu-featured-card__body">
+              <p class="menu-featured-card__label">おすすめ</p>
+              <h3>はちみつトースト</h3>
+              <p class="menu-featured-card__lead">Morning人気の、やさしい甘さ。</p>
+              <p class="menu-featured-card__price">drink + ¥200</p>
             </div>
           </article>
 
-          <article class="menu-card surface-card">
-            <div class="menu-card__media menu-card__media--toast media-frame" aria-hidden="true"></div>
-            <div class="menu-card__body">
-              <h3>厚切り昔ながらのトースト</h3>
-              <p class="menu-card__price">¥400</p>
-              <p>コーヒーと合わせたい軽食。</p>
+          <article class="menu-featured-card surface-card">
+            <div class="menu-featured-card__media menu-featured-card__media--pudding media-frame" aria-hidden="true"></div>
+            <div class="menu-featured-card__body">
+              <p class="menu-featured-card__label">おすすめ</p>
+              <h3>チーズケーキ</h3>
+              <p class="menu-featured-card__lead">食後にも合う、軽やかな甘味。</p>
+              <p class="menu-featured-card__price">drink + ¥250</p>
             </div>
           </article>
+        </div>
 
-          <article class="menu-card surface-card">
-            <div class="menu-card__media menu-card__media--pudding media-frame" aria-hidden="true"></div>
-            <div class="menu-card__body">
-              <h3>自製ほろ苦カラメルプリン</h3>
-              <p class="menu-card__price">¥450</p>
-              <p>少し固めのクラシックなプリン。</p>
+        <div class="menu-list-grid" aria-label="グランドメニュー">
+          <article class="menu-list-card surface-card">
+            <div class="menu-list-card__header">
+              <p class="section-kicker">Drink</p>
+              <h3>定番のドリンク</h3>
             </div>
+            <ul class="menu-list">
+              <li><span>ブレンドコーヒー</span><span>¥550</span></li>
+              <li><span>アイスコーヒー</span><span>¥550</span></li>
+              <li><span>カフェラテ (hot/ice)</span><span>¥600</span></li>
+              <li><span>フラットホワイト</span><span>¥600</span></li>
+              <li><span>紅茶 (hot/ice)</span><span>¥500</span></li>
+              <li><span>チャイ (hot/ice)</span><span>¥600</span></li>
+              <li><span>オレンジジュース</span><span>¥450</span></li>
+              <li><span>レモンスカッシュ</span><span>¥500</span></li>
+            </ul>
+          </article>
+
+          <article class="menu-list-card surface-card">
+            <div class="menu-list-card__header">
+              <p class="section-kicker">Morning 10:00 - 12:00</p>
+              <h3>朝のセット</h3>
+            </div>
+            <ul class="menu-list">
+              <li><span>トースト（サラダ・ゆで卵 付）</span><span>drink + ¥100</span></li>
+              <li><span>はちみつトースト（サラダ・ゆで卵 付）</span><span>drink + ¥200</span></li>
+              <li><span>あんバタートースト（サラダ・ゆで卵 付）</span><span>drink + ¥220</span></li>
+              <li><span>クロックムッシュ（サラダ・ゆで卵 付）</span><span>drink + ¥250</span></li>
+            </ul>
+          </article>
+
+          <article class="menu-list-card surface-card">
+            <div class="menu-list-card__header">
+              <p class="section-kicker">Sweets</p>
+              <h3>食後の甘味</h3>
+            </div>
+            <ul class="menu-list">
+              <li><span>マカロン</span><span>drink + ¥180</span></li>
+              <li><span>ニューヨークチーズケーキ</span><span>drink + ¥250</span></li>
+              <li><span>モンブラン</span><span>drink + ¥280</span></li>
+              <li><span>ショコラテリーヌ</span><span>drink + ¥250</span></li>
+            </ul>
           </article>
         </div>
 
         <div class="menu__footer">
-          <a class="button button--secondary" href="#top">メニュー詳細を見る</a>
+          <a class="button button--secondary" href="#access">アクセスを見る</a>
+          <a class="button button--secondary" href="#news">Instagramで最新メニューを見る</a>
         </div>
       </section>
 
