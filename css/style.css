@@ -302,7 +302,11 @@ main {
 
 .menu-featured {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  grid-template-rows: repeat(2, minmax(180px, auto));
+  grid-template-areas:
+    "lead side1"
+    "lead side2";
   gap: var(--space-4);
   margin-top: var(--space-5);
 }
@@ -311,6 +315,19 @@ main {
   overflow: hidden;
   display: grid;
   gap: 0;
+  position: relative;
+}
+
+.menu-featured-card:first-child {
+  grid-area: lead;
+}
+
+.menu-featured-card:nth-child(2) {
+  grid-area: side1;
+}
+
+.menu-featured-card:nth-child(3) {
+  grid-area: side2;
 }
 
 .menu-featured-card__media {
@@ -333,6 +350,10 @@ main {
   display: grid;
   gap: var(--space-2);
   padding: var(--space-4);
+}
+
+.menu-featured-card:first-child .menu-featured-card__body {
+  padding: clamp(var(--space-4), 2.5vw, var(--space-6));
 }
 
 .menu-featured-card__label {
@@ -363,9 +384,24 @@ main {
 
 .menu-list-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  grid-template-areas:
+    "drink morning"
+    "drink sweets";
   gap: var(--space-4);
   margin-top: var(--space-5);
+}
+
+.menu-list-card:first-child {
+  grid-area: drink;
+}
+
+.menu-list-card:nth-child(2) {
+  grid-area: morning;
+}
+
+.menu-list-card:nth-child(3) {
+  grid-area: sweets;
 }
 
 .menu-list-card {
@@ -376,6 +412,18 @@ main {
   display: grid;
   gap: var(--space-1);
   margin-bottom: var(--space-4);
+}
+
+.menu-list-card:nth-child(2) {
+  background:
+    linear-gradient(180deg, rgb(122 155 126 / 12%), rgb(250 248 245 / 0%)),
+    var(--color-surface);
+}
+
+.menu-list-card:nth-child(3) {
+  background:
+    linear-gradient(180deg, rgb(200 155 106 / 10%), rgb(250 248 245 / 0%)),
+    var(--color-surface);
 }
 
 .menu-list {
@@ -400,6 +448,14 @@ main {
 .menu-list span:last-child {
   white-space: nowrap;
   color: var(--color-primary);
+  font-weight: 700;
+}
+
+.menu-list-card:nth-child(2) .menu-list li:first-child {
+  padding-bottom: var(--space-3);
+}
+
+.menu-list-card:nth-child(2) .menu-list li:first-child span:first-child {
   font-weight: 700;
 }
 
@@ -564,6 +620,7 @@ main {
   .menu-featured,
   .menu-list-grid {
     grid-template-columns: 1fr;
+    grid-template-areas: none;
   }
 
   .hero__content {
@@ -605,6 +662,15 @@ main {
 
   .menu-featured-card__media {
     min-height: 220px;
+  }
+
+  .menu-featured-card:first-child,
+  .menu-featured-card:nth-child(2),
+  .menu-featured-card:nth-child(3),
+  .menu-list-card:first-child,
+  .menu-list-card:nth-child(2),
+  .menu-list-card:nth-child(3) {
+    grid-area: auto;
   }
 
   .intro,
