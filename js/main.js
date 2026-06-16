@@ -12,10 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ".section-heading, .intro__content, .menu-featured-card, .menu-list-card, .gallery-item, .access__info, .access__map, .news__notice, .news__instagram"
     )
   );
-  const sectionIds = ["menu", "access", "news", "instagram"];
-  const sections = sectionIds
-    .map((id) => document.getElementById(id))
-    .filter(Boolean);
 
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
@@ -25,13 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const getHeaderOffset = () => {
     if (!header) return 0;
     return header.getBoundingClientRect().height;
-  };
-
-  const setActiveLink = (id) => {
-    navLinks.forEach((link) => {
-      const targetId = link.getAttribute("href")?.slice(1);
-      link.classList.toggle("is-active", targetId === id);
-    });
   };
 
   const setMobileMenuOpen = (isOpen) => {
@@ -100,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
         behavior: prefersReducedMotion ? "auto" : "smooth",
       });
       history.replaceState(null, "", href);
-      setActiveLink(href.slice(1));
     });
   });
 
@@ -161,31 +149,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  if ("IntersectionObserver" in window && sections.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible?.target?.id) {
-          setActiveLink(visible.target.id);
-        }
-      },
-      {
-        root: null,
-        rootMargin: "-35% 0px -55% 0px",
-        threshold: [0.15, 0.3, 0.6],
-      }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-  }
-
-  const hashTarget = window.location.hash.slice(1);
-  if (hashTarget) {
-    setActiveLink(hashTarget);
-  } else {
-    setActiveLink("menu");
-  }
 });

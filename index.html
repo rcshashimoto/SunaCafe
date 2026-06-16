@@ -119,17 +119,18 @@
       }
 
       .site-header.is-over-hero {
-        background: rgb(62 52 46 / 34%);
-        border-bottom-color: rgb(255 250 244 / 25%);
-        color: #fffaf4;
+        background: rgb(250 248 245 / 96%);
+        border-bottom-color: rgb(221 207 192 / 78%);
+        color: var(--color-text);
+        box-shadow: 0 10px 24px rgb(62 52 46 / 10%);
       }
 
       .site-header.is-over-hero .site-brand {
-        color: #fffaf4;
+        color: var(--color-primary);
       }
 
       .site-header.is-over-hero .site-nav a {
-        color: #fffaf4;
+        color: var(--color-text);
         border-color: transparent;
       }
 
@@ -140,19 +141,19 @@
       }
 
       .site-header.is-over-hero .menu-toggle {
-        color: #fffaf4;
-        border-color: rgb(255 250 244 / 26%);
+        color: var(--color-text);
+        border-color: var(--color-border);
       }
 
       .site-header.is-over-hero .menu-toggle:hover {
-        background: rgb(255 250 244 / 12%);
-        border-color: rgb(255 250 244 / 34%);
+        background: #fff;
+        border-color: var(--color-primary);
       }
 
       .site-header.is-over-hero .site-nav a:hover {
-        background: rgb(255 250 244 / 12%);
-        border-color: rgb(255 250 244 / 22%);
-        color: #fffaf4;
+        background: #fff;
+        border-color: var(--color-primary);
+        color: var(--color-primary);
       }
 
       .site-header.is-over-hero .site-nav--mobile a:hover {
@@ -161,12 +162,21 @@
         color: var(--color-primary);
       }
 
-      .site-header.is-over-hero .site-nav a.is-active {
-        color: #fffaf4;
-        background: transparent;
-        border-color: rgb(255 250 244 / 28%);
-        text-decoration: underline;
-        text-underline-offset: 0.28em;
+      @media (max-width: 767px) {
+        .site-header {
+          background: rgb(250 248 245 / 98%);
+          border-bottom-color: rgb(221 207 192 / 78%);
+          box-shadow: 0 10px 24px rgb(62 52 46 / 8%);
+        }
+
+        .site-header__inner {
+          gap: 12px;
+        }
+
+        .menu-toggle {
+          flex: 0 0 auto;
+          background: rgb(255 253 249 / 96%);
+        }
       }
 
       .section-heading h2,
@@ -248,18 +258,6 @@
         animation: hero-media-zoom 1.8s ease-out both;
       }
 
-      .site-nav a.is-active {
-        color: #6b4f3d;
-        font-weight: 700;
-      }
-
-      .site-footer__nav a.is-active {
-        color: #fffaf4;
-        font-weight: 700;
-        text-decoration: underline;
-        text-underline-offset: 0.2em;
-      }
-
       @keyframes hero-fade-up {
         from {
           opacity: 0;
@@ -321,7 +319,7 @@
         </button>
       </div>
       <div
-        class="site-nav site-nav--mobile fixed inset-x-0 top-0 z-40 hidden h-[100svh] border-t border-border/55 bg-[#fffdf9] px-4 pt-[72px] text-text/80 shadow-[0_10px_24px_rgb(62_52_46_/_10%)] ring-1 ring-border/40 md:hidden"
+        class="site-nav site-nav--mobile fixed inset-x-0 top-0 z-[60] hidden h-[100svh] border-t border-border/55 bg-[#fffdf9] px-4 pt-[72px] text-text/80 shadow-[0_10px_24px_rgb(62_52_46_/_10%)] ring-1 ring-border/40 md:hidden"
         id="mobile-menu"
       >
         <div class="mx-auto flex h-full max-w-container flex-col gap-6 px-0 pb-6">
