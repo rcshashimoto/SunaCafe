@@ -9,51 +9,321 @@
       content="SUNA CAFE は、30年続く地域密着の喫茶店です。落ち着いた空間で、こだわりのハンドドリップコーヒーをどうぞ。"
     />
     <meta name="theme-color" content="#faf8f5" />
-    <link rel="stylesheet" href="css/variables.css" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: "#faf8f5",
+              surface: "#fffdf9",
+              "surface-soft": "#f4ede3",
+              border: "#ddcfc0",
+              text: "#3e342e",
+              muted: "#76655b",
+              primary: "#6b4f3d",
+              "primary-hover": "#584132",
+              accent: "#7a9b7e",
+              highlight: "#c89b6a",
+              notice: "#a15c3b",
+            },
+            fontFamily: {
+              heading: ['"Yu Mincho"', '"Hiragino Mincho ProN"', "serif"],
+              body: ['"Noto Sans JP"', '"BIZ UDPGothic"', "sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 12px 30px rgb(62 52 46 / 10%)",
+              card: "0 8px 18px rgb(62 52 46 / 8%)",
+            },
+            borderRadius: {
+              md: "18px",
+              lg: "28px",
+            },
+            maxWidth: {
+              container: "1200px",
+              content: "960px",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --color-bg: #faf8f5;
+        --color-surface: #fffdf9;
+        --color-surface-soft: #f4ede3;
+        --color-border: #ddcfc0;
+        --color-text: #3e342e;
+        --color-text-muted: #76655b;
+        --color-primary: #6b4f3d;
+        --color-primary-hover: #584132;
+        --color-accent: #7a9b7e;
+        --color-accent-soft: #dce6da;
+        --color-highlight: #c89b6a;
+        --color-notice: #a15c3b;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--color-bg);
+        color: var(--color-text);
+        font-family: "Noto Sans JP", "BIZ UDPGothic", sans-serif;
+        font-size: 16px;
+        line-height: 1.8;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      p,
+      dl,
+      dd,
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      .font-heading {
+        font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--color-primary);
+      }
+
+      .section-kicker {
+        color: var(--color-primary);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .surface-card {
+        background-color: #fffdf9;
+      }
+
+      .site-brand {
+        letter-spacing: 0.08em;
+        color: var(--color-primary);
+      }
+
+      .section-heading h2,
+      .menu-featured-card__body h3,
+      .menu-list-card h3,
+      .news h3 {
+        color: var(--color-text);
+      }
+
+      .section-lead,
+      .menu-featured-card__lead,
+      .gallery-item figcaption {
+        color: var(--color-text-muted);
+      }
+
+      .menu-featured-card__price,
+      .menu-list span:last-child,
+      .info-list dt {
+        color: var(--color-primary);
+      }
+
+      .button {
+        font: inherit;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+        transition-delay: var(--reveal-delay, 0ms);
+      }
+
+      .hero__content > * {
+        animation: hero-fade-up 0.8s ease-out both;
+      }
+
+      .hero__content > *:nth-child(1) {
+        animation-delay: 0.08s;
+      }
+
+      .hero__content > *:nth-child(2) {
+        animation-delay: 0.16s;
+      }
+
+      .hero__content > *:nth-child(3) {
+        animation-delay: 0.24s;
+      }
+
+      .hero__content > *:nth-child(4) {
+        animation-delay: 0.32s;
+      }
+
+      .hero__content > *:nth-child(5) {
+        animation-delay: 0.4s;
+      }
+
+      .hero__media--main {
+        animation: hero-media-zoom 1.8s ease-out both;
+      }
+
+      .site-nav a.is-active {
+        color: #6b4f3d;
+        font-weight: 700;
+      }
+
+      .site-footer__nav a.is-active {
+        color: #fffaf4;
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+      }
+
+      @keyframes hero-fade-up {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes hero-media-zoom {
+        from {
+          transform: scale(1.04);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+    </style>
     <script src="js/main.js" defer></script>
   </head>
-  <body>
-    <header class="site-header" id="top">
-      <div class="site-header__inner">
-        <p class="site-brand">SUNA CAFE</p>
-        <nav class="site-nav" aria-label="主要ナビゲーション">
-          <a href="#menu">メニュー</a>
-          <a href="#access">アクセス</a>
-          <a href="#news">お知らせ</a>
-          <a href="#instagram">Instagram</a>
+  <body class="bg-bg font-body text-text">
+    <header
+      class="site-header sticky top-0 z-10 border-b border-border/55 bg-bg/92 backdrop-blur-md"
+      id="top"
+    >
+      <div
+        class="site-header__inner mx-auto flex max-w-container items-center justify-between gap-4 px-4 py-3 max-[767px]:px-3"
+      >
+        <p class="site-brand font-heading tracking-[0.08em] text-primary">SUNA CAFE</p>
+        <nav
+          class="site-nav flex flex-wrap gap-3 text-sm text-text/80"
+          aria-label="主要ナビゲーション"
+        >
+          <a class="transition-colors hover:text-primary" href="#menu">メニュー</a>
+          <a class="transition-colors hover:text-primary" href="#access">アクセス</a>
+          <a class="transition-colors hover:text-primary" href="#news">お知らせ</a>
+          <a class="transition-colors hover:text-primary" href="#instagram">Instagram</a>
         </nav>
       </div>
     </header>
 
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero__media hero__media--main media-frame" aria-hidden="true"></div>
-        <div class="hero__content">
-          <p class="hero__eyebrow">30年変わらない、いつもの場所。</p>
-          <h1 id="hero-title">心が、ふっと軽くなる。</h1>
-          <p class="hero__lead">
+    <main class="grid gap-16 pb-16 lg:gap-24 lg:pb-24">
+      <section
+        class="hero relative min-h-[calc(100svh-72px)] overflow-hidden text-[#fffaf4] shadow-soft max-[767px]:min-h-[calc(100svh-64px)]"
+        style="background: linear-gradient(180deg, rgb(62 52 46 / 28%), rgb(62 52 46 / 48%)), linear-gradient(135deg, #cbb79d, #8e6d53 60%, #5c4436);"
+        aria-labelledby="hero-title"
+      >
+        <div
+          class="hero__media hero__media--main absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style="
+            background-image:
+              linear-gradient(180deg, rgb(62 52 46 / 28%), rgb(62 52 46 / 48%)),
+              url('image/Hero.jpg');
+          "
+          aria-hidden="true"
+        ></div>
+        <div class="hero__content relative z-10 mx-auto grid w-full max-w-[1200px] gap-3 px-10 py-16 max-[767px]:px-4 max-[767px]:py-12">
+          <p class="hero__eyebrow text-lg text-[#fffaf4]/82">30年変わらない、いつもの場所。</p>
+          <h1
+            id="hero-title"
+            class="font-heading text-[clamp(40px,5vw,72px)] font-semibold leading-[1.05] tracking-[0.02em] max-[767px]:text-[clamp(36px,12vw,52px)]"
+          >
+            心が、ふっと軽くなる。
+          </h1>
+          <p class="hero__lead max-w-[42rem] text-lg text-[#fffaf4]/88">
             地域に寄り添いながら、静かな時間を大切にしてきた喫茶店です。
           </p>
-          <ul class="hero__chips" aria-label="店舗の基本情報">
-            <li>営業中</li>
-            <li>徒歩5分</li>
-            <li>駐車場3台</li>
-            <li>現金・QR決済</li>
+          <ul class="hero__chips flex flex-wrap gap-2" aria-label="店舗の基本情報">
+            <li class="rounded-full border border-[#fffaf4]/28 bg-[#fffaf4]/10 px-3.5 py-2 text-sm backdrop-blur-sm">
+              営業中
+            </li>
+            <li class="rounded-full border border-[#fffaf4]/28 bg-[#fffaf4]/10 px-3.5 py-2 text-sm backdrop-blur-sm">
+              徒歩5分
+            </li>
+            <li class="rounded-full border border-[#fffaf4]/28 bg-[#fffaf4]/10 px-3.5 py-2 text-sm backdrop-blur-sm">
+              駐車場3台
+            </li>
+            <li class="rounded-full border border-[#fffaf4]/28 bg-[#fffaf4]/10 px-3.5 py-2 text-sm backdrop-blur-sm">
+              現金・QR決済
+            </li>
           </ul>
-          <div class="hero__actions">
-            <a class="button button--primary" href="#menu">メニューを見る</a>
-            <a class="button button--secondary" href="#access">地図を見る</a>
+          <div class="hero__actions mt-2 flex flex-wrap gap-3">
+            <a
+              class="button button--primary inline-flex min-h-12 items-center justify-center rounded-full px-4 text-white shadow-soft transition-transform hover:-translate-y-0.5"
+              style="background-color: #6b4f3d;"
+              href="#menu"
+            >
+              メニューを見る
+            </a>
+            <a
+              class="button button--secondary inline-flex min-h-12 items-center justify-center rounded-full border border-[#fffaf4]/35 px-4 text-[#fffaf4] transition-transform hover:-translate-y-0.5 hover:border-[#fffaf4] hover:text-[#fffaf4]"
+              href="#access"
+            >
+              地図を見る
+            </a>
           </div>
         </div>
       </section>
 
-      <section class="intro" aria-labelledby="story-title">
-        <div class="intro__media intro__media--story media-frame" aria-hidden="true"></div>
-        <div class="intro__content surface-card">
-          <p class="section-kicker">SUNA CAFEの想い</p>
-          <h2 id="story-title">「変わらないこと」の心地よさを、今日も。</h2>
+      <section
+        class="intro mx-auto grid max-w-container grid-cols-1 items-start gap-6 px-4 scroll-mt-24 lg:grid-cols-[minmax(280px,0.9fr)_minmax(320px,1.1fr)] lg:items-center"
+        aria-labelledby="story-title"
+      >
+        <div
+          class="intro__media intro__media--story min-h-[340px] rounded-md bg-cover bg-center bg-no-repeat shadow-card lg:min-h-[560px]"
+          style="background-image: url('image/story.jpg');"
+          aria-hidden="true"
+        ></div>
+          <div class="intro__content surface-card grid gap-3 rounded-[18px] border border-border/65 p-6 shadow-card">
+          <p class="section-kicker text-sm tracking-[0.08em] text-primary">SUNA CAFEの想い</p>
+          <h2 id="story-title" class="font-heading text-[clamp(28px,3vw,40px)] leading-[1.35] font-semibold">
+            「変わらないこと」の心地よさを、今日も。
+          </h2>
           <p>
             30年この街で、夫婦で一杯ずつコーヒーを淹れてきました。派手さよりも、
             静かに気持ちを整えられる場所であることを大切にしています。
@@ -64,152 +334,236 @@
         </div>
       </section>
 
-      <section class="menu" id="menu" aria-labelledby="menu-title">
-        <div class="section-heading">
-          <p class="section-kicker">メニュー</p>
-          <h2 id="menu-title">毎日、自家焙煎。花とコーヒーの香りをお楽しみください</h2>
-          <p class="section-lead">まずは人気の3品を写真付きでご紹介します。</p>
+      <section class="menu mx-auto max-w-container px-4 scroll-mt-24" id="menu" aria-labelledby="menu-title">
+        <div class="section-heading mb-8 grid gap-2 max-w-content">
+          <p class="section-kicker text-sm tracking-[0.08em] text-primary">メニュー</p>
+          <h2 id="menu-title" class="font-heading text-[clamp(30px,3vw,40px)] leading-[1.2] font-semibold">
+            毎日、自家焙煎。花とコーヒーの香りをお楽しみください
+          </h2>
+          <p class="section-lead mt-2 text-lg text-muted">まずは人気の3品を写真付きでご紹介します。</p>
         </div>
 
-        <div class="menu-featured">
-          <article class="menu-featured-card surface-card">
-            <div class="menu-featured-card__media menu-featured-card__media--blend media-frame" aria-hidden="true"></div>
-            <div class="menu-featured-card__body">
-              <p class="menu-featured-card__label">おすすめ No.1</p>
-              <h3>SUNAブレンド</h3>
-              <p class="menu-featured-card__lead">深煎り寄りの、すっきり飲みやすい定番の一杯。</p>
-              <p class="menu-featured-card__price">¥550</p>
+        <div class="menu-featured mt-8 grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:grid-rows-2">
+          <article class="menu-featured-card surface-card overflow-hidden rounded-[18px] border border-border/65 shadow-card lg:row-span-2">
+            <div
+              class="menu-featured-card__media menu-featured-card__media--blend min-h-[220px] bg-cover bg-center bg-no-repeat lg:min-h-[320px]"
+              style="background-image: url('image/menu_coffee.jpg'); background-position: center 28%;"
+              aria-hidden="true"
+            ></div>
+            <div class="menu-featured-card__body grid gap-2 p-4 lg:-mt-14 lg:mx-4 lg:mb-4 lg:rounded-[18px] lg:bg-[rgba(250,248,245,0.92)] lg:p-4 lg:shadow-[0_12px_24px_rgb(62_52_46_/_10%)] lg:backdrop-blur-md">
+              <p class="menu-featured-card__label inline-flex w-fit rounded-full bg-[rgba(122,155,126,0.12)] px-2.5 py-1 text-sm font-bold tracking-[0.08em] text-accent">
+                おすすめ No.1
+              </p>
+              <h3 class="font-heading text-xl leading-[1.35]">SUNAブレンド</h3>
+              <p class="menu-featured-card__lead text-muted">深煎り寄りの、すっきり飲みやすい定番の一杯。</p>
+              <p class="menu-featured-card__price text-lg font-bold text-primary">¥550</p>
             </div>
           </article>
 
-          <article class="menu-featured-card surface-card">
-            <div class="menu-featured-card__media menu-featured-card__media--toast media-frame" aria-hidden="true"></div>
-            <div class="menu-featured-card__body">
-              <p class="menu-featured-card__label">おすすめ</p>
-              <h3>はちみつトースト</h3>
-              <p class="menu-featured-card__lead">Morning人気の、やさしい甘さ。</p>
-              <p class="menu-featured-card__price">drink + ¥200</p>
+          <article class="menu-featured-card surface-card overflow-hidden rounded-[18px] border border-border/65 shadow-card lg:col-start-2 lg:row-start-1">
+            <div
+              class="menu-featured-card__media menu-featured-card__media--toast min-h-[220px] bg-cover bg-center bg-no-repeat"
+              style="background-image: url('image/menu_トースト.jpg'); background-position: center 42%;"
+              aria-hidden="true"
+            ></div>
+            <div class="menu-featured-card__body grid gap-2 p-4">
+              <p class="menu-featured-card__label text-sm font-bold tracking-[0.08em] text-accent">おすすめ</p>
+              <h3 class="font-heading text-xl leading-[1.35]">はちみつトースト</h3>
+              <p class="menu-featured-card__lead text-muted">Morning人気の、やさしい甘さ。</p>
+              <p class="menu-featured-card__price text-lg font-bold text-primary">drink + ¥200</p>
             </div>
           </article>
 
-          <article class="menu-featured-card surface-card">
-            <div class="menu-featured-card__media menu-featured-card__media--pudding media-frame" aria-hidden="true"></div>
-            <div class="menu-featured-card__body">
-              <p class="menu-featured-card__label">おすすめ</p>
-              <h3>チーズケーキ</h3>
-              <p class="menu-featured-card__lead">食後にも合う、軽やかな甘味。</p>
-              <p class="menu-featured-card__price">drink + ¥250</p>
+          <article class="menu-featured-card surface-card overflow-hidden rounded-[18px] border border-border/65 shadow-card lg:col-start-2 lg:row-start-2">
+            <div
+              class="menu-featured-card__media menu-featured-card__media--pudding min-h-[220px] bg-cover bg-center bg-no-repeat"
+              style="background-image: url('image/menu_プリン.jpg'); background-position: center 40%;"
+              aria-hidden="true"
+            ></div>
+            <div class="menu-featured-card__body grid gap-2 p-4">
+              <p class="menu-featured-card__label text-sm font-bold tracking-[0.08em] text-accent">おすすめ</p>
+              <h3 class="font-heading text-xl leading-[1.35]">チーズケーキ</h3>
+              <p class="menu-featured-card__lead text-muted">食後にも合う、軽やかな甘味。</p>
+              <p class="menu-featured-card__price text-lg font-bold text-primary">drink + ¥250</p>
             </div>
-          </article>
-        </div>
-
-        <div class="menu-list-grid" aria-label="グランドメニュー">
-          <article class="menu-list-card surface-card">
-            <div class="menu-list-card__header">
-              <p class="section-kicker">Drink</p>
-              <h3>定番のドリンク</h3>
-            </div>
-            <ul class="menu-list">
-              <li><span>ブレンドコーヒー</span><span>¥550</span></li>
-              <li><span>アイスコーヒー</span><span>¥550</span></li>
-              <li><span>カフェラテ (hot/ice)</span><span>¥600</span></li>
-              <li><span>フラットホワイト</span><span>¥600</span></li>
-              <li><span>紅茶 (hot/ice)</span><span>¥500</span></li>
-              <li><span>チャイ (hot/ice)</span><span>¥600</span></li>
-              <li><span>オレンジジュース</span><span>¥450</span></li>
-              <li><span>レモンスカッシュ</span><span>¥500</span></li>
-            </ul>
-          </article>
-
-          <article class="menu-list-card surface-card">
-            <div class="menu-list-card__header">
-              <p class="section-kicker">Morning 10:00 - 12:00</p>
-              <h3>朝のセット</h3>
-            </div>
-            <ul class="menu-list">
-              <li><span>トースト（サラダ・ゆで卵 付）</span><span>drink + ¥100</span></li>
-              <li><span>はちみつトースト（サラダ・ゆで卵 付）</span><span>drink + ¥200</span></li>
-              <li><span>あんバタートースト（サラダ・ゆで卵 付）</span><span>drink + ¥220</span></li>
-              <li><span>クロックムッシュ（サラダ・ゆで卵 付）</span><span>drink + ¥250</span></li>
-            </ul>
-          </article>
-
-          <article class="menu-list-card surface-card">
-            <div class="menu-list-card__header">
-              <p class="section-kicker">Sweets</p>
-              <h3>食後の甘味</h3>
-            </div>
-            <ul class="menu-list">
-              <li><span>マカロン</span><span>drink + ¥180</span></li>
-              <li><span>ニューヨークチーズケーキ</span><span>drink + ¥250</span></li>
-              <li><span>モンブラン</span><span>drink + ¥280</span></li>
-              <li><span>ショコラテリーヌ</span><span>drink + ¥250</span></li>
-            </ul>
           </article>
         </div>
 
-        <div class="menu__footer">
-          <a class="button button--secondary" href="#access">アクセスを見る</a>
-          <a class="button button--secondary" href="#news">Instagramで最新メニューを見る</a>
+        <div class="menu-list-grid mt-8 grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)] lg:grid-rows-2">
+          <article class="menu-list-card surface-card rounded-[18px] border border-border/65 p-4 shadow-card lg:row-span-2">
+            <div class="menu-list-card__header mb-4 grid gap-1">
+              <p class="section-kicker text-sm tracking-[0.08em] text-primary">Drink</p>
+              <h3 class="font-heading text-xl leading-[1.35]">定番のドリンク</h3>
+            </div>
+            <ul class="menu-list grid gap-2">
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-border/65 pb-2">
+                <span>ブレンドコーヒー</span><span class="whitespace-nowrap font-bold text-primary">¥550</span>
+              </li>
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-border/65 pb-2">
+                <span>アイスコーヒー</span><span class="whitespace-nowrap font-bold text-primary">¥550</span>
+              </li>
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-border/65 pb-2">
+                <span>カフェラテ (hot/ice)</span><span class="whitespace-nowrap font-bold text-primary">¥600</span>
+              </li>
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-border/65 pb-2">
+                <span>フラットホワイト</span><span class="whitespace-nowrap font-bold text-primary">¥600</span>
+              </li>
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-border/65 pb-2">
+                <span>紅茶 (hot/ice)</span><span class="whitespace-nowrap font-bold text-primary">¥500</span>
+              </li>
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-border/65 pb-2">
+                <span>チャイ (hot/ice)</span><span class="whitespace-nowrap font-bold text-primary">¥600</span>
+              </li>
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-border/65 pb-2">
+                <span>オレンジジュース</span><span class="whitespace-nowrap font-bold text-primary">¥450</span>
+              </li>
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3">
+                <span>レモンスカッシュ</span><span class="whitespace-nowrap font-bold text-primary">¥500</span>
+              </li>
+            </ul>
+          </article>
+
+          <article
+            class="menu-list-card surface-card rounded-[18px] border border-border/65 p-4 shadow-card lg:col-start-2 lg:row-start-1"
+            style="background: linear-gradient(180deg, rgb(122 155 126 / 12%), rgb(250 248 245 / 0%)), #fffdf9;"
+          >
+            <div class="menu-list-card__header mb-4 grid gap-1">
+              <p class="section-kicker text-sm tracking-[0.08em] text-primary">Morning 10:00 - 12:00</p>
+              <h3 class="font-heading text-xl leading-[1.35]">朝のセット</h3>
+            </div>
+            <ul class="menu-list grid gap-2">
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-border/65 pb-2">
+                <span class="font-bold">トースト（サラダ・ゆで卵 付）</span><span class="whitespace-nowrap font-bold text-primary">drink + ¥100</span>
+              </li>
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-border/65 pb-2">
+                <span>はちみつトースト（サラダ・ゆで卵 付）</span><span class="whitespace-nowrap font-bold text-primary">drink + ¥200</span>
+              </li>
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-border/65 pb-2">
+                <span>あんバタートースト（サラダ・ゆで卵 付）</span><span class="whitespace-nowrap font-bold text-primary">drink + ¥220</span>
+              </li>
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3">
+                <span>クロックムッシュ（サラダ・ゆで卵 付）</span><span class="whitespace-nowrap font-bold text-primary">drink + ¥250</span>
+              </li>
+            </ul>
+          </article>
+
+          <article
+            class="menu-list-card surface-card rounded-[18px] border border-border/65 p-4 shadow-card lg:col-start-2 lg:row-start-2"
+            style="background: linear-gradient(180deg, rgb(200 155 106 / 10%), rgb(250 248 245 / 0%)), #fffdf9;"
+          >
+            <div class="menu-list-card__header mb-4 grid gap-1">
+              <p class="section-kicker text-sm tracking-[0.08em] text-primary">Sweets</p>
+              <h3 class="font-heading text-xl leading-[1.35]">食後の甘味</h3>
+            </div>
+            <ul class="menu-list grid gap-2">
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-border/65 pb-2">
+                <span>マカロン</span><span class="whitespace-nowrap font-bold text-primary">drink + ¥180</span>
+              </li>
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-border/65 pb-2">
+                <span>ニューヨークチーズケーキ</span><span class="whitespace-nowrap font-bold text-primary">drink + ¥250</span>
+              </li>
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3 border-b border-border/65 pb-2">
+                <span>モンブラン</span><span class="whitespace-nowrap font-bold text-primary">drink + ¥280</span>
+              </li>
+              <li class="grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-3">
+                <span>ショコラテリーヌ</span><span class="whitespace-nowrap font-bold text-primary">drink + ¥250</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="menu__footer mt-8 flex flex-wrap justify-center gap-3">
+          <a
+            class="button button--secondary inline-flex min-h-12 items-center justify-center rounded-full border border-border px-4 text-text transition-transform hover:-translate-y-0.5 hover:border-primary hover:text-primary"
+            href="#access"
+          >
+            アクセスを見る
+          </a>
+          <a
+            class="button button--secondary inline-flex min-h-12 items-center justify-center rounded-full border border-border px-4 text-text transition-transform hover:-translate-y-0.5 hover:border-primary hover:text-primary"
+            href="#news"
+          >
+            Instagramで最新メニューを見る
+          </a>
         </div>
       </section>
 
-      <section class="gallery" aria-labelledby="gallery-title">
-        <div class="section-heading">
-          <p class="section-kicker">店内空間</p>
-          <h2 id="gallery-title">カウンター席も、テーブル席も、落ち着いて過ごせる場所。</h2>
+      <section class="gallery mx-auto max-w-container px-4 scroll-mt-24" aria-labelledby="gallery-title">
+        <div class="section-heading mb-8 grid gap-2">
+          <p class="section-kicker text-sm tracking-[0.08em] text-primary">店内空間</p>
+          <h2 id="gallery-title" class="font-heading text-[clamp(30px,3vw,40px)] leading-[1.2] font-semibold">
+            カウンター席も、テーブル席も、落ち着いて過ごせる場所。
+          </h2>
         </div>
 
-        <div class="gallery-grid" aria-label="店内写真">
-          <figure class="gallery-item">
-            <div class="gallery-item__media gallery-item__media--counter media-frame" aria-hidden="true"></div>
-            <figcaption>カウンター席</figcaption>
+        <div class="gallery-grid grid grid-cols-1 gap-4 lg:grid-cols-3" aria-label="店内写真">
+          <figure class="gallery-item m-0 grid gap-2">
+            <div
+              class="gallery-item__media gallery-item__media--counter aspect-[4/3] min-h-[220px] rounded-[18px] bg-cover bg-center bg-no-repeat shadow-card"
+              style="background-image: url('image/Gallery1.jpg');"
+              aria-hidden="true"
+            ></div>
+            <figcaption class="text-center text-sm text-muted">カウンター席</figcaption>
           </figure>
-          <figure class="gallery-item">
-            <div class="gallery-item__media gallery-item__media--table media-frame" aria-hidden="true"></div>
-            <figcaption>テーブル席</figcaption>
+          <figure class="gallery-item m-0 grid gap-2">
+            <div
+              class="gallery-item__media gallery-item__media--table aspect-[4/3] min-h-[220px] rounded-[18px] bg-cover bg-center bg-no-repeat shadow-card"
+              style="background-image: url('image/Gallery2.jpg');"
+              aria-hidden="true"
+            ></div>
+            <figcaption class="text-center text-sm text-muted">テーブル席</figcaption>
           </figure>
-          <figure class="gallery-item">
-            <div class="gallery-item__media gallery-item__media--drip media-frame" aria-hidden="true"></div>
-            <figcaption>ハンドドリップの様子</figcaption>
+          <figure class="gallery-item m-0 grid gap-2">
+            <div
+              class="gallery-item__media gallery-item__media--drip aspect-[4/3] min-h-[220px] rounded-[18px] bg-cover bg-center bg-no-repeat shadow-card"
+              style="background-image: url('image/Gallery3.jpg');"
+              aria-hidden="true"
+            ></div>
+            <figcaption class="text-center text-sm text-muted">ハンドドリップの様子</figcaption>
           </figure>
         </div>
       </section>
 
-      <section class="access" id="access" aria-labelledby="access-title">
-        <div class="section-heading">
-          <p class="section-kicker">インフォメーション</p>
-          <h2 id="access-title">来店前に知りたい情報をひとまとめに。</h2>
+      <section class="access mx-auto max-w-container px-4 scroll-mt-24" id="access" aria-labelledby="access-title">
+        <div class="section-heading mb-8 grid gap-2">
+          <p class="section-kicker text-sm tracking-[0.08em] text-primary">インフォメーション</p>
+          <h2 id="access-title" class="font-heading text-[clamp(30px,3vw,40px)] leading-[1.2] font-semibold">
+            来店前に知りたい情報をひとまとめに。
+          </h2>
         </div>
 
-        <div class="access__layout">
-          <div class="access__info surface-card">
-            <dl class="info-list">
-              <div>
-                <dt>住所</dt>
-                <dd>〇〇市〇〇町1-2-3</dd>
+        <div class="access__layout grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <div class="access__info surface-card rounded-[18px] border border-border/65 p-6 shadow-card">
+            <dl class="info-list grid gap-3">
+              <div class="border-b border-border/65 pb-3">
+                <dt class="mb-1 text-sm text-primary">住所</dt>
+                <dd class="text-lg">〇〇市〇〇町1-2-3</dd>
               </div>
-              <div>
-                <dt>営業時間</dt>
-                <dd>9:00〜18:00</dd>
+              <div class="border-b border-border/65 pb-3">
+                <dt class="mb-1 text-sm text-primary">営業時間</dt>
+                <dd class="text-lg">9:00〜18:00</dd>
               </div>
-              <div>
-                <dt>定休日</dt>
-                <dd>日曜日</dd>
+              <div class="border-b border-border/65 pb-3">
+                <dt class="mb-1 text-sm text-primary">定休日</dt>
+                <dd class="text-lg">日曜日</dd>
               </div>
-              <div>
-                <dt>駐車場</dt>
-                <dd>3台（店横2台・第2駐車場1台）</dd>
+              <div class="border-b border-border/65 pb-3">
+                <dt class="mb-1 text-sm text-primary">駐車場</dt>
+                <dd class="text-lg">3台（店横2台・第2駐車場1台）</dd>
               </div>
-              <div>
-                <dt>支払い</dt>
-                <dd>現金・QR決済</dd>
+              <div class="border-b-0 pb-0">
+                <dt class="mb-1 text-sm text-primary">支払い</dt>
+                <dd class="text-lg">現金・QR決済</dd>
               </div>
             </dl>
           </div>
-          <div class="access__map surface-card media-frame" aria-label="Googleマップ埋め込みエリア">
+          <div
+            class="access__map surface-card min-h-full overflow-hidden rounded-[18px] border border-border/65 shadow-card"
+            style="background-image: linear-gradient(135deg, rgba(107,79,61,0.12), rgba(122,155,126,0.12)); background-color: #f4ede3;"
+          >
             <iframe
               title="SUNA CAFE の地図"
+              class="block min-h-[500px] w-full border-0"
               src="https://www.google.com/maps?q=35.6895,139.6917&z=16&output=embed"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
@@ -218,31 +572,54 @@
         </div>
       </section>
 
-      <section class="news" id="news" aria-labelledby="news-title">
-        <div class="section-heading">
-          <p class="section-kicker">お知らせ & Instagram</p>
-          <h2 id="news-title">営業の案内と、いつもの店の空気感。</h2>
+      <section class="news mx-auto max-w-container px-4 scroll-mt-24" id="news" aria-labelledby="news-title">
+        <div class="section-heading mb-8 grid gap-2">
+          <p class="section-kicker text-sm tracking-[0.08em] text-primary">お知らせ & Instagram</p>
+          <h2 id="news-title" class="font-heading text-[clamp(30px,3vw,40px)] leading-[1.2] font-semibold">
+            営業の案内と、いつもの店の空気感。
+          </h2>
         </div>
 
-        <div class="news__layout">
-          <div class="news__notice surface-card">
-            <h3>お知らせ</h3>
-            <ul>
+        <div class="news__layout grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <div class="news__notice surface-card rounded-[18px] border border-border/65 p-6 shadow-card">
+            <h3 class="font-heading text-xl leading-[1.35]">お知らせ</h3>
+            <ul class="mt-4 grid gap-3">
               <li>〇月〇日（〇）は定休日です。</li>
               <li>〇月より営業時間が変わります。</li>
             </ul>
           </div>
-          <div class="news__instagram surface-card" id="instagram">
-            <h3>Instagram</h3>
-            <div class="instagram-grid" aria-label="Instagram投稿一覧">
-              <div class="instagram-grid__item instagram-grid__item--one media-frame" aria-hidden="true"></div>
-              <div class="instagram-grid__item instagram-grid__item--two media-frame" aria-hidden="true"></div>
-              <div class="instagram-grid__item instagram-grid__item--three media-frame" aria-hidden="true"></div>
-              <div class="instagram-grid__item instagram-grid__item--four media-frame" aria-hidden="true"></div>
+          <div class="news__instagram surface-card rounded-[18px] border border-border/65 p-6 shadow-card" id="instagram">
+            <h3 class="font-heading text-xl leading-[1.35]">Instagram</h3>
+            <div class="instagram-grid mt-4 grid grid-cols-2 gap-2 lg:grid-cols-4" aria-label="Instagram投稿一覧">
+              <div
+                class="instagram-grid__item instagram-grid__item--one aspect-square min-h-0 rounded-[18px] bg-cover bg-center bg-no-repeat shadow-card"
+                style="background-image: url('image/Instagram1.jpg');"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="instagram-grid__item instagram-grid__item--two aspect-square min-h-0 rounded-[18px] bg-cover bg-center bg-no-repeat shadow-card"
+                style="background-image: url('image/Instagram2.jpg');"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="instagram-grid__item instagram-grid__item--three aspect-square min-h-0 rounded-[18px] bg-cover bg-center bg-no-repeat shadow-card"
+                style="background-image: url('image/Instagram3.jpg');"
+                aria-hidden="true"
+              ></div>
+              <div
+                class="instagram-grid__item instagram-grid__item--four aspect-square min-h-0 rounded-[18px] bg-cover bg-center bg-no-repeat shadow-card"
+                style="background-image: url('image/Instagram4.jpg');"
+                aria-hidden="true"
+              ></div>
             </div>
-            <div class="news__cta">
-              <a class="button button--primary" href="#" aria-label="Instagramをフォローする">
-                Instagramをフォローする
+            <div class="news__cta mt-8 flex flex-wrap justify-center gap-3">
+            <a
+              class="button button--primary inline-flex min-h-12 items-center justify-center rounded-full px-4 text-white shadow-soft transition-transform hover:-translate-y-0.5"
+              style="background-color: #6b4f3d;"
+              href="#"
+              aria-label="Instagramをフォローする"
+            >
+              Instagramをフォローする
               </a>
             </div>
           </div>
@@ -250,16 +627,16 @@
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="site-footer__inner">
-        <p class="site-brand">SUNA CAFE</p>
+    <footer class="site-footer border-t border-[#ddcfc0]/55 bg-[#6b4f3d] text-[#fffaf4]">
+      <div class="site-footer__inner mx-auto flex max-w-container flex-col items-center gap-3 px-4 py-6 text-center">
+        <p class="site-brand font-heading tracking-[0.08em] text-[#fffaf4]">SUNA CAFE</p>
         <p>〒〇〇〇-〇〇〇〇 〇〇市〇〇町1-2-3</p>
-        <nav class="site-footer__nav" aria-label="フッターリンク">
-          <a href="#access">アクセス</a>
-          <a href="#menu">メニュー</a>
-          <a href="#instagram">Instagram</a>
+        <nav class="site-footer__nav flex flex-wrap justify-center gap-3 text-sm" aria-label="フッターリンク">
+          <a class="text-[#fffaf4] transition-colors hover:opacity-[0.85] hover:text-[#fffaf4]" href="#access">アクセス</a>
+          <a class="text-[#fffaf4] transition-colors hover:opacity-[0.85] hover:text-[#fffaf4]" href="#menu">メニュー</a>
+          <a class="text-[#fffaf4] transition-colors hover:opacity-[0.85] hover:text-[#fffaf4]" href="#instagram">Instagram</a>
         </nav>
-        <p class="site-footer__copy">© 2024 SUNA CAFE. All rights reserved.</p>
+        <p class="site-footer__copy text-sm opacity-80">© 2024 SUNA CAFE. All rights reserved.</p>
       </div>
     </footer>
   </body>
