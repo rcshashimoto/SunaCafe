@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".site-header");
+  const hero = document.querySelector(".hero");
   const navLinks = Array.from(
     document.querySelectorAll(".site-nav a, .site-footer__nav a")
   );
@@ -29,6 +30,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const updateHeaderTheme = () => {
+    if (!header || !hero) return;
+
+    if (window.scrollY <= 0) {
+      header.classList.remove("is-over-hero");
+      return;
+    }
+
+    const headerHeight = getHeaderOffset();
+    const heroRect = hero.getBoundingClientRect();
+    const isOverHero =
+      heroRect.top <= headerHeight && heroRect.bottom > headerHeight;
+
+    header.classList.toggle("is-over-hero", isOverHero);
+  };
+
+  let headerThemeRaf = 0;
+  const scheduleHeaderThemeUpdate = () => {
+    if (headerThemeRaf) return;
+
+    headerThemeRaf = window.requestAnimationFrame(() => {
+      headerThemeRaf = 0;
+      updateHeaderTheme();
+    });
+  };
+
   navLinks.forEach((link) => {
     const href = link.getAttribute("href");
     if (!href || !href.startsWith("#")) return;
@@ -49,6 +76,11 @@ document.addEventListener("DOMContentLoaded", () => {
       setActiveLink(href.slice(1));
     });
   });
+
+  window.addEventListener("scroll", scheduleHeaderThemeUpdate, {
+    passive: true,
+  });
+  window.addEventListener("resize", scheduleHeaderThemeUpdate);
 
   if (revealTargets.length > 0) {
     revealTargets.forEach((target, index) => {
