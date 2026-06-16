@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".site-header");
   const hero = document.querySelector(".hero");
+  const menuToggle = document.querySelector("#menu-toggle");
+  const mobileMenu = document.querySelector("#mobile-menu");
+  const mobileMenuClose = document.querySelector("#mobile-menu-close");
   const navLinks = Array.from(
     document.querySelectorAll(".site-nav a, .site-footer__nav a")
   );
@@ -17,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
+  const desktopHeaderThemeQuery = window.matchMedia("(min-width: 768px)");
 
   const getHeaderOffset = () => {
     if (!header) return 0;
@@ -30,8 +34,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const setMobileMenuOpen = (isOpen) => {
+    if (!menuToggle || !mobileMenu) return;
+
+    mobileMenu.classList.toggle("hidden", !isOpen);
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute(
+      "aria-label",
+      isOpen ? "メニューを閉じる" : "メニューを開く"
+    );
+  };
+
+  const isMobileMenuOpen = () =>
+    Boolean(mobileMenu && !mobileMenu.classList.contains("hidden"));
+
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
   const updateHeaderTheme = () => {
     if (!header || !hero) return;
+
+    if (!desktopHeaderThemeQuery.matches) {
+      header.classList.remove("is-over-hero");
+      return;
+    }
 
     if (window.scrollY <= 0) {
       header.classList.remove("is-over-hero");
@@ -65,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!target) return;
 
       event.preventDefault();
+      closeMobileMenu();
       const top =
         target.getBoundingClientRect().top + window.scrollY - getHeaderOffset() - 12;
 
@@ -77,10 +104,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener("click", () => {
+      setMobileMenuOpen(!isMobileMenuOpen());
+    });
+
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener("click", closeMobileMenu);
+    }
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        closeMobileMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMobileMenu();
+      }
+    });
+  }
+
   window.addEventListener("scroll", scheduleHeaderThemeUpdate, {
     passive: true,
   });
   window.addEventListener("resize", scheduleHeaderThemeUpdate);
+  desktopHeaderThemeQuery.addEventListener("change", scheduleHeaderThemeUpdate);
 
   if (revealTargets.length > 0) {
     revealTargets.forEach((target, index) => {

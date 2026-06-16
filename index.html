@@ -133,10 +133,32 @@
         border-color: transparent;
       }
 
+      .site-header.is-over-hero .site-nav--mobile a {
+        color: var(--color-text);
+        background: transparent;
+        border-color: rgb(221 207 192 / 55%);
+      }
+
+      .site-header.is-over-hero .menu-toggle {
+        color: #fffaf4;
+        border-color: rgb(255 250 244 / 26%);
+      }
+
+      .site-header.is-over-hero .menu-toggle:hover {
+        background: rgb(255 250 244 / 12%);
+        border-color: rgb(255 250 244 / 34%);
+      }
+
       .site-header.is-over-hero .site-nav a:hover {
         background: rgb(255 250 244 / 12%);
         border-color: rgb(255 250 244 / 22%);
         color: #fffaf4;
+      }
+
+      .site-header.is-over-hero .site-nav--mobile a:hover {
+        background: #fff;
+        border-color: var(--color-primary);
+        color: var(--color-primary);
       }
 
       .site-header.is-over-hero .site-nav a.is-active {
@@ -262,7 +284,7 @@
   </head>
   <body class="bg-bg font-body text-text">
     <header
-      class="site-header sticky top-0 z-10 border-b border-border/55 bg-bg/92 backdrop-blur-md"
+      class="site-header sticky top-0 z-50 border-b border-border/55 bg-bg/92 backdrop-blur-md"
       id="top"
     >
       <div
@@ -270,7 +292,7 @@
       >
         <p class="site-brand font-heading tracking-[0.08em] text-primary">SUNA CAFE</p>
         <nav
-          class="site-nav flex flex-wrap gap-3 text-sm text-text/80"
+          class="site-nav site-nav--desktop hidden flex-wrap gap-3 text-sm text-text/80 md:flex"
           aria-label="主要ナビゲーション"
         >
           <a class="transition-colors hover:text-primary" href="#menu">メニュー</a>
@@ -278,6 +300,58 @@
           <a class="transition-colors hover:text-primary" href="#news">お知らせ</a>
           <a class="transition-colors hover:text-primary" href="#instagram">Instagram</a>
         </nav>
+        <button
+          class="menu-toggle inline-flex items-center justify-center rounded-full border border-border px-3 py-2 text-text transition-colors hover:bg-white hover:text-primary md:hidden"
+          type="button"
+          aria-label="メニューを開く"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          id="menu-toggle"
+        >
+          <span class="sr-only">メニュー</span>
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5">
+            <path
+              d="M4 6h16M4 12h16M4 18h16"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="1.8"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="site-nav site-nav--mobile fixed inset-x-0 top-0 z-40 hidden h-[100svh] border-t border-border/55 bg-[#fffdf9] px-4 pt-[72px] text-text/80 shadow-[0_10px_24px_rgb(62_52_46_/_10%)] ring-1 ring-border/40 md:hidden"
+        id="mobile-menu"
+      >
+        <div class="mx-auto flex h-full max-w-container flex-col gap-6 px-0 pb-6">
+          <div class="flex items-center justify-between border-b border-border/55 pb-4">
+            <p class="site-brand font-heading tracking-[0.08em] text-primary">MENU</p>
+            <button
+              class="inline-flex items-center justify-center rounded-full border border-border px-3 py-2 text-text transition-colors hover:bg-white hover:text-primary"
+              type="button"
+              aria-label="メニューを閉じる"
+              id="mobile-menu-close"
+            >
+              <span class="sr-only">メニューを閉じる</span>
+              <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5">
+                <path
+                  d="M6 6l12 12M18 6L6 18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-width="1.8"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="grid gap-3 text-lg">
+            <a class="rounded-[18px] border border-border/55 bg-white px-4 py-4 transition-colors hover:border-primary hover:text-primary" href="#menu">メニュー</a>
+            <a class="rounded-[18px] border border-border/55 bg-white px-4 py-4 transition-colors hover:border-primary hover:text-primary" href="#access">アクセス</a>
+            <a class="rounded-[18px] border border-border/55 bg-white px-4 py-4 transition-colors hover:border-primary hover:text-primary" href="#news">お知らせ</a>
+            <a class="rounded-[18px] border border-border/55 bg-white px-4 py-4 transition-colors hover:border-primary hover:text-primary" href="#instagram">Instagram</a>
+          </div>
+        </div>
       </div>
     </header>
 
