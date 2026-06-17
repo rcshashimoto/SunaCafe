@@ -202,7 +202,6 @@
           url("../image/Hero.jpg");
       }
 
-      .intro__content,
       .menu-featured-card,
       .menu-list-card,
       .gallery-item__media,
@@ -211,6 +210,10 @@
       .news__notice,
       .news__instagram {
         background-color: var(--color-surface);
+      }
+
+      .intro__content {
+        background-color: transparent;
       }
 
       .menu-list-card--morning {
