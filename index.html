@@ -202,6 +202,71 @@
         font: inherit;
       }
 
+      .button--primary {
+        background-color: var(--color-primary);
+      }
+
+      .button--primary:hover {
+        background-color: var(--color-primary-hover);
+      }
+
+      .button--secondary {
+        border-color: rgb(255 250 244 / 35%);
+      }
+
+      .button--secondary:hover {
+        border-color: rgb(255 250 244 / 100%);
+      }
+
+      .button--accent {
+        background-color: var(--color-accent);
+      }
+
+      .button--accent:hover {
+        background-color: #5f7f62;
+        color: #fff;
+      }
+
+      .hero {
+        background:
+          linear-gradient(180deg, rgb(62 52 46 / 28%), rgb(62 52 46 / 48%)),
+          linear-gradient(135deg, #cbb79d, #8e6d53 60%, #5c4436);
+      }
+
+      .hero__media--main {
+        background-image:
+          linear-gradient(180deg, rgb(62 52 46 / 28%), rgb(62 52 46 / 48%)),
+          url("image/Hero.jpg");
+      }
+
+      .intro__content,
+      .menu-featured-card,
+      .menu-list-card,
+      .gallery-item__media,
+      .access__info,
+      .access__map,
+      .news__notice,
+      .news__instagram {
+        background-color: var(--color-surface);
+      }
+
+      .menu-list-card--morning {
+        background:
+          linear-gradient(180deg, rgb(122 155 126 / 12%), rgb(250 248 245 / 0%)),
+          var(--color-surface);
+      }
+
+      .menu-list-card--sweets {
+        background:
+          linear-gradient(180deg, rgb(200 155 106 / 10%), rgb(250 248 245 / 0%)),
+          var(--color-surface);
+      }
+
+      .access__map {
+        background-image: linear-gradient(135deg, rgba(107, 79, 61, 0.12), rgba(122, 155, 126, 0.12));
+        background-color: #f4ede3;
+      }
+
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
@@ -356,16 +421,10 @@
     <main class="grid gap-16 pb-16 lg:gap-24 lg:pb-24">
       <section
         class="hero relative min-h-[calc(100svh-72px)] overflow-hidden text-[#fffaf4] shadow-soft max-[767px]:min-h-[calc(100svh-64px)]"
-        style="background: linear-gradient(180deg, rgb(62 52 46 / 28%), rgb(62 52 46 / 48%)), linear-gradient(135deg, #cbb79d, #8e6d53 60%, #5c4436);"
         aria-labelledby="hero-title"
       >
         <div
           class="hero__media hero__media--main absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style="
-            background-image:
-              linear-gradient(180deg, rgb(62 52 46 / 28%), rgb(62 52 46 / 48%)),
-              url('image/Hero.jpg');
-          "
           aria-hidden="true"
         ></div>
         <div class="hero__content relative z-10 mx-auto grid w-full max-w-[1200px] gap-3 px-10 py-16 max-[767px]:px-4 max-[767px]:py-12">
@@ -396,13 +455,12 @@
           <div class="hero__actions mt-2 flex flex-wrap gap-3">
             <a
               class="button button--primary inline-flex min-h-12 items-center justify-center rounded-full px-4 text-white shadow-soft transition-transform hover:-translate-y-0.5"
-              style="background-color: #6b4f3d;"
               href="#menu"
             >
               メニューを見る
             </a>
             <a
-              class="button button--secondary inline-flex min-h-12 items-center justify-center rounded-full border border-[#fffaf4]/35 px-4 text-[#fffaf4] transition-transform hover:-translate-y-0.5 hover:border-[#fffaf4] hover:text-[#fffaf4]"
+              class="button button--accent inline-flex min-h-12 items-center justify-center rounded-full px-4 text-white shadow-soft transition-transform hover:-translate-y-0.5"
               href="#access"
             >
               地図を見る
@@ -411,16 +469,14 @@
         </div>
       </section>
 
-      <section
-        class="intro mx-auto grid max-w-[1040px] grid-cols-1 items-start gap-6 px-4 scroll-mt-24 lg:grid-cols-[minmax(260px,0.85fr)_minmax(300px,1.15fr)] lg:items-center"
-        aria-labelledby="story-title"
-      >
+      <!-- About -->
+      <section class="intro mx-auto grid max-w-[1040px] grid-cols-1 items-start gap-6 px-4 scroll-mt-24 lg:grid-cols-[minmax(260px,0.85fr)_minmax(300px,1.15fr)] lg:items-center" aria-labelledby="story-title">
         <div
           class="intro__media intro__media--story min-h-[340px] rounded-md bg-cover bg-center bg-no-repeat shadow-card lg:min-h-[560px]"
           style="background-image: url('image/story.jpg');"
           aria-hidden="true"
         ></div>
-          <div class="intro__content surface-card grid gap-3 rounded-[18px] border border-border/65 p-6 shadow-card">
+        <div class="intro__content surface-card grid gap-3 rounded-[18px] border border-border/65 p-6 shadow-card">
           <p class="section-kicker text-sm tracking-[0.08em] text-primary">SUNA CAFEの想い</p>
           <h2 id="story-title" class="font-heading text-[clamp(28px,3vw,40px)] leading-[1.35] font-semibold">
             「変わらないこと」の心地よさを、今日も。
@@ -435,6 +491,7 @@
         </div>
       </section>
 
+      <!-- Menu -->
       <section class="menu mx-auto max-w-[1080px] px-4 scroll-mt-24" id="menu" aria-labelledby="menu-title">
         <div class="section-heading mb-8 grid gap-2 max-w-content">
           <p class="section-kicker text-sm tracking-[0.08em] text-primary">メニュー</p>
@@ -524,10 +581,7 @@
             </ul>
           </article>
 
-          <article
-            class="menu-list-card surface-card rounded-[18px] border border-border/65 p-4 shadow-card lg:col-start-2 lg:row-start-1"
-            style="background: linear-gradient(180deg, rgb(122 155 126 / 12%), rgb(250 248 245 / 0%)), #fffdf9;"
-          >
+          <article class="menu-list-card menu-list-card--morning surface-card rounded-[18px] border border-border/65 p-4 shadow-card lg:col-start-2 lg:row-start-1">
             <div class="menu-list-card__header mb-4 grid gap-1">
               <p class="section-kicker text-sm tracking-[0.08em] text-primary">Morning 10:00 - 12:00</p>
               <h3 class="font-heading text-xl leading-[1.35]">朝のセット</h3>
@@ -548,10 +602,7 @@
             </ul>
           </article>
 
-          <article
-            class="menu-list-card surface-card rounded-[18px] border border-border/65 p-4 shadow-card lg:col-start-2 lg:row-start-2"
-            style="background: linear-gradient(180deg, rgb(200 155 106 / 10%), rgb(250 248 245 / 0%)), #fffdf9;"
-          >
+          <article class="menu-list-card menu-list-card--sweets surface-card rounded-[18px] border border-border/65 p-4 shadow-card lg:col-start-2 lg:row-start-2">
             <div class="menu-list-card__header mb-4 grid gap-1">
               <p class="section-kicker text-sm tracking-[0.08em] text-primary">Sweets</p>
               <h3 class="font-heading text-xl leading-[1.35]">食後の甘味</h3>
@@ -589,6 +640,7 @@
         </div>
       </section>
 
+      <!-- Gallery -->
       <section class="gallery mx-auto max-w-container px-4 scroll-mt-24" aria-labelledby="gallery-title">
         <div class="section-heading mb-8 grid gap-2">
           <p class="section-kicker text-sm tracking-[0.08em] text-primary">店内空間</p>
@@ -625,6 +677,7 @@
         </div>
       </section>
 
+      <!-- Access -->
       <section class="access mx-auto max-w-container px-4 scroll-mt-24" id="access" aria-labelledby="access-title">
         <div class="section-heading mb-8 grid gap-2">
           <p class="section-kicker text-sm tracking-[0.08em] text-primary">インフォメーション</p>
@@ -658,10 +711,7 @@
               </div>
             </dl>
           </div>
-          <div
-            class="access__map surface-card min-h-full overflow-hidden rounded-[18px] border border-border/65 shadow-card"
-            style="background-image: linear-gradient(135deg, rgba(107,79,61,0.12), rgba(122,155,126,0.12)); background-color: #f4ede3;"
-          >
+          <div class="access__map surface-card min-h-full overflow-hidden rounded-[18px] border border-border/65 shadow-card">
             <iframe
               title="SUNA CAFE の地図"
               class="block min-h-[500px] w-full border-0"
@@ -673,6 +723,7 @@
         </div>
       </section>
 
+      <!-- News / Instagram -->
       <section class="news mx-auto max-w-container px-4 scroll-mt-24" id="news" aria-labelledby="news-title">
         <div class="section-heading mb-8 grid gap-2">
           <p class="section-kicker text-sm tracking-[0.08em] text-primary">お知らせ & Instagram</p>
@@ -714,13 +765,12 @@
               ></div>
             </div>
             <div class="news__cta mt-8 flex flex-wrap justify-center gap-3">
-            <a
-              class="button button--primary inline-flex min-h-12 items-center justify-center rounded-full px-4 text-white shadow-soft transition-transform hover:-translate-y-0.5"
-              style="background-color: #6b4f3d;"
-              href="#"
-              aria-label="Instagramをフォローする"
-            >
-              Instagramをフォローする
+              <a
+                class="button button--primary inline-flex min-h-12 items-center justify-center rounded-full px-4 text-white shadow-soft transition-transform hover:-translate-y-0.5"
+                href="#"
+                aria-label="Instagramをフォローする"
+              >
+                Instagramをフォローする
               </a>
             </div>
           </div>
@@ -728,6 +778,7 @@
       </section>
     </main>
 
+    <!-- Footer -->
     <footer class="site-footer border-t border-[#ddcfc0]/55 bg-[#6b4f3d] text-[#fffaf4]">
       <div class="site-footer__inner mx-auto flex max-w-container flex-col items-center gap-3 px-4 py-6 text-center">
         <p class="site-brand font-heading tracking-[0.08em] text-[#fffaf4]">SUNA CAFE</p>
