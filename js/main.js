@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   const revealTargets = Array.from(
     document.querySelectorAll(
-      ".section-heading, .intro__content, .menu-featured-card, .menu-list-card, .gallery-item, .access__info, .access__map, .news__notice, .news__instagram"
+      ".section-heading, .intro__content, .menu-featured, .menu-list-grid, .gallery-item, .access__info, .access__map, .news__notice, .news__instagram"
     )
   );
 
