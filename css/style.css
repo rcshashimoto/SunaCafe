@@ -214,6 +214,14 @@
         background-color: transparent;
       }
 
+      .access {
+        background-color: #f4f1ed;
+      }
+
+      .menu {
+        background-color: #f4f1ed;
+      }
+
       .menu-list-card--morning {
         background:
           linear-gradient(180deg, rgb(122 155 126 / 12%), rgb(250 248 245 / 0%)),
