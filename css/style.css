@@ -174,11 +174,14 @@
       }
 
       .button--secondary {
-        border-color: rgb(255 250 244 / 35%);
+        background-color: rgb(255 255 255 / 72%);
+        border-color: rgb(107 79 61 / 42%);
+        box-shadow: 0 1px 0 rgb(255 255 255 / 55%) inset;
       }
 
       .button--secondary:hover {
-        border-color: rgb(255 250 244 / 100%);
+        background-color: #fff;
+        border-color: var(--color-primary);
       }
 
       .button--accent {
